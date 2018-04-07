@@ -13,6 +13,22 @@
 #include "sph_blake.h"
 #include "Lyra2.h"
 
+void lyra2z_hash(const char* input, char* output)
+{
+    sph_blake256_context     ctx_blake;
+
+    uint32_t hashA[8], hashB[8];
+
+    sph_blake256_init(&ctx_blake);
+    sph_blake256 (&ctx_blake, input, 80);
+    sph_blake256_close (&ctx_blake, hashA);	
+	
+	LYRA2(hashB, 32, hashA, 32, hashA, 32, 8, 8, 8);
+	
+	memcpy(output, hashB, 32);
+}
+
+/*
 static void get_lyra2z_hash(uint64_t* mtx, void *state, const void *input)
 {
 	sph_blake256_context ctx_blake;
@@ -34,7 +50,7 @@ void lyra2z_hash(void *output, const void *input)
 													// Windows: _aligned_malloc(size,align) 
 	uint64_t *mtx = _mm_malloc(size, 64);			// freed in algo
 	get_lyra2z_hash(mtx, output, input);
-}
+}*/
 
 
 // cpuminer
