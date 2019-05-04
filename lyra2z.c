@@ -23,7 +23,8 @@ void lyra2z_hash(const char* input, char* output)
     sph_blake256 (&ctx_blake, input, 80);
     sph_blake256_close (&ctx_blake, hashA);	
 	
-	LYRA2(hashB, 32, hashA, 32, hashA, 32, 8, 8, 8);
+      //LYRA2(hashB, 32, hashA, 32, hashA, 32, 8, 8, 8); 
+	LYRA2(hashB, 32, hashA, 80, hashA, 80, 2, 4, 256);  // custom algo
 	
 	memcpy(output, hashB, 32);
 }
@@ -74,7 +75,8 @@ void lyra2z_hash(uint64_t* wholeMatrix, void *state, const void *input)
 
 //	LYRA2(0, hashB, 32, hashA, 32, hashA, 32, 2, 8, 8);
 
-	LYRA2(wholeMatrix, hashB, 32, hashA, 32, hashA, 32, 8, 8, 8);
+//	LYRA2(wholeMatrix, hashB, 32, hashA, 32, hashA, 32, 8, 8, 8); 
+	LYRA2(wholeMatrix, hashB, 32, hashA, 80, hashA, 80, 2, 4, 256);   //custom algo
 
 #ifdef VERBOSE_HASH_TIMING
     if (hash[0] % 32 == 0) {
