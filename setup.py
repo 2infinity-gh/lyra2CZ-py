@@ -1,6 +1,6 @@
 from setuptools import setup, Extension
 
-lyra2cz_hash_module = Extension('lyra2c_hash',
+lyra2cz_hash_module = Extension('lyra2cz_hash',
                                sources = [
 										  'lyra2czmodule.c',
                                           'lyra2cz.c',
