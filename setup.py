@@ -1,19 +1,19 @@
 from setuptools import setup, Extension
 
-lyra2z_hash_module = Extension('lyra2zc_hash',
+lyra2cz_hash_module = Extension('lyra2c_hash',
                                sources = [
-										  'lyra2zmodule.c',
-                                          'lyra2z.c',
+										  'lyra2czmodule.c',
+                                          'lyra2cz.c',
 										  'Sponge.c',
 										  'Lyra2.c',
 										  'blake.c'],
                                include_dirs=['.'])
 
-setup (name = 'lyra2zc_hash',
+setup (name = 'lyra2cz_hash',
        version = '0.1.0',
-       author_email = 'devwarrior.zcoin@gmail.com',
-       author = 'devwarrior',
-       url = 'https://github.com/2infinity-gh/lyra2zc-py',
+       author_email = '2infinity.nl@gmail.com',
+       author = '2infinity',
+       url = 'https://github.com/2infinity-gh/lyra2cz-py',
        description = 'Bindings for Lyra2CZ proof of work used by BitcoinCZ',
-       ext_modules = [lyra2z_hash_module])
+       ext_modules = [lyra2cz_hash_module])
 

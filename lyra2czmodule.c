@@ -1,8 +1,8 @@
 #include <Python.h>
 
-#include "lyra2z.h"
+#include "lyra2cz.h"
 
-static PyObject *lyra2z_getpowhash(PyObject *self, PyObject *args)
+static PyObject *lyra2cz_getpowhash(PyObject *self, PyObject *args)
 {
     char *output;
     PyObject *value;
@@ -17,9 +17,9 @@ static PyObject *lyra2z_getpowhash(PyObject *self, PyObject *args)
     output = PyMem_Malloc(32);
 
 #if PY_MAJOR_VERSION >= 3
-    lyra2z_hash((char *)PyBytes_AsString((PyObject*) input), output);
+    lyra2cz_hash((char *)PyBytes_AsString((PyObject*) input), output);
 #else
-    lyra2z_hash((char *)PyString_AsString((PyObject*) input), output);
+    lyra2cz_hash((char *)PyString_AsString((PyObject*) input), output);
 #endif
     Py_DECREF(input);
 #if PY_MAJOR_VERSION >= 3
@@ -32,26 +32,26 @@ static PyObject *lyra2z_getpowhash(PyObject *self, PyObject *args)
 }
 
 static PyMethodDef Lyra2ZMethods[] = {
-    { "getPoWHash", lyra2z_getpowhash, METH_VARARGS, "Returns the proof of work hash using lyra2z hash" },
+    { "getPoWHash", lyra2cz_getpowhash, METH_VARARGS, "Returns the proof of work hash using lyra2cz hash" },
     { NULL, NULL, 0, NULL }
 };
 
 #if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef Lyra2ZModule = {
     PyModuleDef_HEAD_INIT,
-    "lyra2z_hash",
+    "lyra2cz_hash",
     "...",
     -1,
     Lyra2ZMethods
 };
 
-PyMODINIT_FUNC PyInit_lyra2z_hash(void) {
+PyMODINIT_FUNC PyInit_lyra2cz_hash(void) {
     return PyModule_Create(&Lyra2ZModule);
 }
 
 #else
 
-PyMODINIT_FUNC initlyra2z_hash(void) {
-    (void) Py_InitModule("lyra2z_hash", Lyra2ZMethods);
+PyMODINIT_FUNC initlyra2cz_hash(void) {
+    (void) Py_InitModule("lyra2cz_hash", Lyra2ZMethods);
 }
 #endif

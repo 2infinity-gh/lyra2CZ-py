@@ -1,8 +1,8 @@
 //
-// lyra2z-zcoin.c : windows test harness for Lyra2z hashing
+// lyra2cz-zcoin.c : windows test harness for Lyra2z hashing
 //
 
-#include "lyra2z-zcoin.h"
+#include "lyra2cz-zcoin.h"
 #include "Lyra2z.h"
 #include <stdio.h>
 
@@ -37,7 +37,7 @@ static void dump(char* d, int len) {
 
 int main()
 {
-	lyra2z_hash(out, test);
+	lyra2cz_hash(out, test);
 	dump(out, OUTLEN);
 	return 0;
 }

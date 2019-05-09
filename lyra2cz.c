@@ -13,7 +13,7 @@
 #include "sph_blake.h"
 #include "Lyra2.h"
 
-void lyra2z_hash(const char* input, char* output)
+void lyra2cz_hash(const char* input, char* output)
 {
     sph_blake256_context     ctx_blake;
 
@@ -30,7 +30,7 @@ void lyra2z_hash(const char* input, char* output)
 }
 
 /*
-static void get_lyra2z_hash(uint64_t* mtx, void *state, const void *input)
+static void get_lyra2cz_hash(uint64_t* mtx, void *state, const void *input)
 {
 	sph_blake256_context ctx_blake;
 
@@ -45,19 +45,19 @@ static void get_lyra2z_hash(uint64_t* mtx, void *state, const void *input)
 	memcpy(state, hashB, 32);
 }
 
-void lyra2z_hash(void *output, const void *input)
+void lyra2cz_hash(void *output, const void *input)
 {
 	size_t size = (int64_t)((int64_t)16 * 16 * 96); // from cpuminer-xzc
 													// Windows: _aligned_malloc(size,align) 
 	uint64_t *mtx = _mm_malloc(size, 64);			// freed in algo
-	get_lyra2z_hash(mtx, output, input);
+	get_lyra2cz_hash(mtx, output, input);
 }*/
 
 
 // cpuminer
 //
 #if 0
-void lyra2z_hash(uint64_t* wholeMatrix, void *state, const void *input)
+void lyra2cz_hash(uint64_t* wholeMatrix, void *state, const void *input)
 {
 #ifdef VERBOSE_HASH_TIMING
 	struct timespec spec;
@@ -89,7 +89,7 @@ void lyra2z_hash(uint64_t* wholeMatrix, void *state, const void *input)
 	memcpy(state, hashB, 32);
 }
 
-int scanhash_lyra2z(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done)
+int scanhash_lyra2cz(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done)
 {
 
 	size_t size = (int64_t)((int64_t)16 * 16 * 96);
@@ -113,8 +113,8 @@ int scanhash_lyra2z(int thr_id, struct work *work, uint32_t max_nonce, uint64_t 
 
 	do {
 		be32enc(&endiandata[19], nonce);
-		lyra2z_hash(wholeMatrix, hash, endiandata);
-		//		lyra2z_hash(0, hash, endiandata);
+		lyra2cz_hash(wholeMatrix, hash, endiandata);
+		//		lyra2cz_hash(0, hash, endiandata);
 
 		if (hash[7] <= Htarg && fulltest(hash, ptarget)) {
 			work_set_target_ratio(work, hash);

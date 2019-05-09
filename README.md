@@ -1,12 +1,12 @@
 
 ----------------------------------
-Python C module for lyra2z hashing 
+Python C module for lyra2cz hashing 
 ----------------------------------
 
 Notes for Zcoin:
 ----------------
 
-Module: lyra2z_hash
+Module: lyra2cz_hash
 
 Please see the "test.py" for a testcase
 
@@ -15,7 +15,7 @@ From a previous readme from ocminer (updated):
 Requirements:
 -------------
 In order to run P2Pool and other Python based pools with the Zcoin network, you would need to build and install the
-lyra2z_hash module for Python that includes the lyra2z proof of work code that Zcoin uses for hashes.
+lyra2cz_hash module for Python that includes the lyra2cz proof of work code that Zcoin uses for hashes.
 
 Linux:
 
@@ -45,8 +45,8 @@ In cmd type this:
 	
 	C:\Python27\python.exe
 	...
-	>>>import lyra2z_hash
-	>>>help('lyra2z_hash')
+	>>>import lyra2cz_hash
+	>>>help('lyra2cz_hash')
 	>>>quit()
 	
     - tested ok
